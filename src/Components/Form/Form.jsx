@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Education from '../Education/Education';
 import Experience from '../Experience/Experience';
+import Skills from '../Skills/Skills';
 
 function Form() {
     
@@ -36,21 +37,12 @@ function Form() {
 
   <h2>Education</h2>
   <Education/>
-  {/* <button onClick={handleAddClick}>Add College</button>
-  {renderFields()} */}
-  {/* <div>
-      {items.map((item, index) => (
-        <div key={index}>
-          <input type="text" value={item} onChange={(event) => handleInputChange(index, event)} />
-          <button onClick={() => handleDeleteItem(index)}>Delete</button>
-        </div>
-      ))}
-    </div> */}
-
       <h2>Experience</h2>
       <Experience/>
-      {/* <button onClick={addCompany}>Add Company</button>
-      {comp} */}
+      <h2>Skills</h2>
+      <Skills/>
+      <button>Create new</button>
+      <button>Save</button>
     </div>
   )
 }

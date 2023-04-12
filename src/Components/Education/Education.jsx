@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 
 function Education() {
-  const [fields, setFields] = useState([]);
+  const [Edfields, setEdFields] = useState([]);
 
   const handleAddClick = () => {
-    setFields([...fields, { field1: '', field2: '' }]);
+    setEdFields([...Edfields, { field1: '', field2: '' }]);
   };
 
   const handleDeleteClick = (index) => {
-    setFields(fields.filter((field, i) => i !== index));
+    setEdFields(Edfields.filter((field, i) => i !== index));
   };
 
   const handleInputChange = (index, field, value) => {
-    const newFields = [...fields];
-    newFields[index][field] = value;
-    setFields(newFields);
+    const newEdFields = [...Edfields];
+    newEdFields[index][field] = value;
+    setEdFields(newEdFields);
   };
 
   return (
     <div>
-      <button onClick={handleAddClick}>Add Fields</button>
-      {fields.map((field, index) => (
+      <button onClick={handleAddClick}>Add EdFields</button>
+      {Edfields.map((field, index) => (
         <div key={index}>
             <label for="name">College <span>*</span></label>
           <input
