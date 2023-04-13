@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
+import '../Style/Formstyle.css'
 
 
 
@@ -19,29 +20,35 @@ function Form() {
   const [fields, setFields] = useState([]);
   const [fullData, setFullData] = useState([]);
 
-  const handleAddClick = () => {
-    setFields([...fields, { field1: '', field2: '' }]);
+  const handleAddClick = (event) => {
+    event.preventDefault();
+    setFields([...fields, { company: '', job: '' }]);
   };
 
+  
   const handleDeleteClick = (index) => {
     setFields(fields.filter((field, i) => i !== index));
   };
 
   const handleInputChange = (index, field, value) => {
-    const newFields = [...fields];
-    newFields[index][field] = value;
-    setFields(newFields);
+    const Experience = [...fields];
+    Experience[index][field] = value;
+    setFields(Experience);
+    setFormData((prevState)=>({
+      ...prevState,
+       Experience,
+    }))
   };
 
+  
   // Experience field ends
 
-  
+  //Storing values
   const [formData,setFormData] =useState({
   name:"",
   email:"",
   address:"",
   phone:"",
-  expereince:[]
   }
   );
   const onChange =(e)=>{
@@ -60,13 +67,13 @@ function Form() {
      navigate('/view')
     
   }
-
   const [selectedOption, setSelectedOption] = useState([]);
   
   // education field
   const [Edfields, setEdFields] = useState([]);
 
-  const edhandleAddClick = () => {
+  const edhandleAddClick = (event) => {
+    event.preventDefault();
     setEdFields([...Edfields, { college: '', course: '' }]);
   };
 
@@ -85,7 +92,7 @@ function Form() {
     
   };
 
-
+  //Education field ends
 
     var handleChange = (selectedOption) => {
 
@@ -116,50 +123,41 @@ function Form() {
     <h2>Personal Details</h2>
   <div className="form-group">
     <label for="name">Full Name <span>*</span></label>
-    <input type="text" name="name" id="name" placeholder="Robert Norman Ross" onChange={onChange}></input>
+    <input type="text" name="name" id="name" onChange={onChange}></input>
     <div id="name__error" class="error"></div>
   </div>
 
   <div className="form-group">
     <label for="address">Address</label>
-    <input type="text" name="address" id="address" placeholder="4059 Mt Lee Dr. Hollywood, CA 90068" onChange={onChange}></input>
+    <input type="text" name="address" id="address" onChange={onChange}></input>
   </div>
 
   <div className="form-group">
     <label for="phone">Phone</label>
-    <input type="text" name="phone" id="phone" placeholder="+1  123 456 7890" onChange={onChange}></input>
+    <input type="text" name="phone" id="phone" onChange={onChange}></input>
   </div>
 
   <div className="form-group">
     <label for="email">Email <span>*</span></label>
-    <input type="text" name="email" id="email" placeholder="example@mail.com" onChange={onChange}></input>
+    <input type="text" name="email" id="email" onChange={onChange}></input>
     <div id="email__error" class="error"></div>
   </div>
 
   {/* Education field starts */}
   <h2>Education</h2>
   <div>
-      <button onClick={edhandleAddClick}>Add EdFields</button>
-      {Edfields.map((field, index) => (
-        <div key={index}>
-            <label for="name">College <span>*</span></label>
-          <input
-            id="college"
-            type="text"
-            value={field.field1}
-            onChange={(e) => edhandleInputChange(index, 'college', e.target.value)}
-          />
-          <label for="name">Course <span>*</span></label>
-          <input
-            id='course'
-            type="text"
-            value={field.field2}
-            onChange={(e) => edhandleInputChange(index, 'course', e.target.value)}
-          />
-          <button onClick={() => edhandleDeleteClick(index)}>Delete</button>
-        </div>
-      ))}
+  <button onClick={edhandleAddClick}>Add Fields</button>
+  {Edfields.map((field, index) => (
+    <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+      <label htmlFor="college" style={{ marginRight: '5px' }}>College <span>*</span></label>
+      <input id="college" type="text" value={field.field1} onChange={(e) => edhandleInputChange(index, 'college', e.target.value)} style={{ marginRight: '15px' }} />
+      <label htmlFor="course" style={{ marginRight: '5px' }}>Course <span>*</span></label>
+      <input id='course' type="text" value={field.field2} onChange={(e) => edhandleInputChange(index, 'course', e.target.value)} style={{ marginRight: '15px' }} />
+      <button onClick={() => edhandleDeleteClick(index)}>Delete</button>
     </div>
+  ))}
+</div>
+
     {/* Education field ends */}
   
         {/* Experience field starts */}
@@ -167,21 +165,21 @@ function Form() {
       <div>
       <button onClick={handleAddClick}>Add Fields</button>
       {fields.map((field, index) => (
-        <div key={index}>
-            <label for="name">Company <span>*</span></label>
+        <div key={index }style={{ display: 'flex', alignItems: 'center' }}>
+            <label htmlFor="company" style={{ marginRight: '5px' }}>College <span>*</span></label>
           <input
             id='company'
             type="text"
             value={field.field1}
-            onChange={(e) => handleInputChange(index, 'field1', e.target.value)}
-          />
-          <label for="name">Job Role <span>*</span></label>
+            onChange={(e) => handleInputChange(index, 'company', e.target.value)}
+            style={{ marginRight: '15px' }} />
+          <label htmlFor="job" style={{ marginRight: '5px' }}>Job Role <span>*</span></label>
           <input
             id='job'
             type="text"
             value={field.field2}
-            onChange={(e) => handleInputChange(index, 'field2', e.target.value)}
-          />
+            onChange={(e) => handleInputChange(index, 'job', e.target.value)}
+            style={{ marginRight: '15px' }} />
           <button onClick={() => handleDeleteClick(index)}>Delete</button>
         </div>
       ))}
@@ -189,23 +187,19 @@ function Form() {
     {/* experience field end */}
       
       <h2>Skills</h2>
-      {/* skillset */}
-      <div className="container">
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
+      
+          <div>
           <Select 
             onChange={handleChange}
           options={skills}
            isMulti />
           </div>
-          <div className="col-md-4"></div>
-        </div>
-      </div>
-      {/* skillset end */}
+          <br/>
 
-      <button>Create new</button>
-      <button type='submit'>Save</button>
+          <button style={{marginRight: '10px'}}>Create new</button>
+          <button type="submit">Save</button>
+
+
       
       </form> 
    
