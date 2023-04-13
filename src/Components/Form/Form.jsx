@@ -22,7 +22,7 @@ function Form() {
 
   const handleAddClick = (event) => {
     event.preventDefault();
-    setFields([...fields, { company: '', job: '' }]);
+    setFields([...fields, { company: '', job: '',year: ''}]);
   };
 
   
@@ -74,10 +74,11 @@ function Form() {
 
   const edhandleAddClick = (event) => {
     event.preventDefault();
-    setEdFields([...Edfields, { college: '', course: '' }]);
+    setEdFields([...Edfields, { college: '', course: '', year: '' }]);
   };
 
   const edhandleDeleteClick = (index) => {
+    
     setEdFields(Edfields.filter((field, i) => i !== index));
   };
 
@@ -115,7 +116,7 @@ function Form() {
   
 
 
-  // Education field ends
+ 
 
   return (
     <div>
@@ -149,11 +150,13 @@ function Form() {
   <button onClick={edhandleAddClick}>Add Fields</button>
   {Edfields.map((field, index) => (
     <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-      <label htmlFor="college" style={{ marginRight: '5px' }}>College <span>*</span></label>
+      <label htmlFor="college" style={{ marginRight: '5px' }}>Institute <span>*</span></label>
       <input id="college" type="text" value={field.field1} onChange={(e) => edhandleInputChange(index, 'college', e.target.value)} style={{ marginRight: '15px' }} />
-      <label htmlFor="course" style={{ marginRight: '5px' }}>Course <span>*</span></label>
+      <label htmlFor="course" style={{ marginRight: '5px' }}>Degree <span>*</span></label>
       <input id='course' type="text" value={field.field2} onChange={(e) => edhandleInputChange(index, 'course', e.target.value)} style={{ marginRight: '15px' }} />
-      <button onClick={() => edhandleDeleteClick(index)}>Delete</button>
+      <label htmlFor="year" style={{ marginRight: '5px' }}>Year <span>*</span></label>
+      <input id='year' type="text" value={field.field2} onChange={(e) => edhandleInputChange(index, 'year', e.target.value)} style={{ marginRight: '15px' }} />
+      <div onClick={() => edhandleDeleteClick(index)}>Delete</div>
     </div>
   ))}
 </div>
@@ -161,29 +164,36 @@ function Form() {
     {/* Education field ends */}
   
         {/* Experience field starts */}
-      <h2>Experience</h2>
-      <div>
-      <button onClick={handleAddClick}>Add Fields</button>
-      {fields.map((field, index) => (
-        <div key={index }style={{ display: 'flex', alignItems: 'center' }}>
-            <label htmlFor="company" style={{ marginRight: '5px' }}>College <span>*</span></label>
-          <input
-            id='company'
-            type="text"
-            value={field.field1}
-            onChange={(e) => handleInputChange(index, 'company', e.target.value)}
-            style={{ marginRight: '15px' }} />
-          <label htmlFor="job" style={{ marginRight: '5px' }}>Job Role <span>*</span></label>
-          <input
-            id='job'
-            type="text"
-            value={field.field2}
-            onChange={(e) => handleInputChange(index, 'job', e.target.value)}
-            style={{ marginRight: '15px' }} />
-          <button onClick={() => handleDeleteClick(index)}>Delete</button>
+        <h2>Experience</h2>
+        <div>
+          <button onClick={handleAddClick}>Add Fields</button>
+          {fields.map((field, index) => (
+            <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+              <label htmlFor="company" style={{ marginRight: '5px' }}>Company <span>*</span></label>
+              <input
+                id='company'
+                type="text"
+                value={field.field1}
+                onChange={(e) => handleInputChange(index, 'company', e.target.value)}
+                style={{ marginRight: '15px' }} />
+              <label htmlFor="job" style={{ marginRight: '5px' }}>Designation <span>*</span></label>
+              <input
+                id='job'
+                type="text"
+                value={field.field2}
+                onChange={(e) => handleInputChange(index, 'job', e.target.value)}
+                style={{ marginRight: '15px' }} />
+                 <label htmlFor="job" style={{ marginRight: '5px' }}>Year <span>*</span></label>
+              <input
+                id='year'
+                type="text"
+                value={field.field3}
+                onChange={(e) => handleInputChange(index, 'year', e.target.value)}
+                style={{ marginRight: '15px' }} />
+              <button onClick={() => handleDeleteClick(index)}>Delete</button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
     {/* experience field end */}
       
       <h2>Skills</h2>
