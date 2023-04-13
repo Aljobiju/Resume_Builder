@@ -1,0 +1,60 @@
+
+form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input::placeholder {
+    color: #999;
+  }
+  
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type='submit'] {
+    background-color: #28a745;
+  }
+  
+  /* Apply styling to select dropdown */
+  .select__dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+
+  .select__dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 5px #007bff;
+  }
