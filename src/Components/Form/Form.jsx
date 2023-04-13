@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+
 import Select from 'react-select';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Style/Formstyle.css'
+// import './Style/Formstyle.css'
 
 
 
@@ -18,7 +19,8 @@ function Form() {
   
   // Experience field starts
   const [fields, setFields] = useState([]);
-  const [fullData, setFullData] = useState([]);
+  const [check, setCheck] = useState(false);
+
 
   const handleAddClick = (event) => {
     event.preventDefault();
@@ -41,6 +43,24 @@ function Form() {
   };
 
   
+
+     
+      
+      const [formFullData, setFormFullData] = useState(null);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('formData');
+    if (storedData) {
+      setFormFullData(JSON.parse(storedData));
+      setFormFullData(storedData)
+      console.log(storedData);
+    }
+  }, []);
+
+   
+     
+
+
   // Experience field ends
 
   //Storing values
