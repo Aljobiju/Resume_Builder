@@ -1,44 +1,23 @@
-// import React from 'react'
-// import { useEffect } from 'react'
-
-// function View() {
-
-//    useEffect(() =>{
-
-//     const formData = JSON.parse(localStorage.getItem('formData'));
-//     console.log(formData);
-
-//    },[])
-
-//   return (
-//     <div>
-
-//      <h1>Hello</h1>
-
-
-//     </div>
-//   )
-// }
-
 // export default View
 import React, { useEffect, useState } from 'react';
-import '../pages/View.css'
+// import '../pages/View.css'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import '../pages/Formedit.css'
 
 function FormEdit() {
   
 
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
+
   const [education, setEducation] = useState([
     { college: '', course: '', year: '' },
-    { college: '', course: '', year: '' }
+  ]);
+  const [experience, setExperience] = useState([
+    { company: '', job: '', year: '' },
+
   ]);
   const [formData, setFormData] = useState(JSON.parse(localStorage.getItem('formData')));
-//   const [experience, setEducation] = useState([
-//     { college: '', course: '', year: '' },
-//     { college: '', course: '', year: '' }
-//   ]);
     const navigate=useNavigate();
 
 
@@ -49,6 +28,15 @@ function FormEdit() {
         setFormData((prevState) => ({
           ...prevState,
           Education,
+        }));
+      };
+      const handleInputChange = (index, field, value) => {
+        const Experience = [...experience];
+        Experience[index][field] = value;
+        setExperience(Experience);
+        setFormData((prevState) => ({
+          ...prevState,
+          Experience,
         }));
       };
   
@@ -65,12 +53,12 @@ function FormEdit() {
   const [Edfields, setEdFields] = useState([]);
 
 
-  const onEdit = () => {
-    setIsEditing(true);
-  };
+  // const onEdit = () => {
+  //   setIsEditing(true);
+  // };
 
   const onSave = () => {
-    setIsEditing(false);
+    // setIsEditing(false);
     localStorage.setItem('formData', JSON.stringify(formData));
   };
 
@@ -104,29 +92,93 @@ function FormEdit() {
       {formData && (
         <form onSubmit={pageRoute}>
           <h2>Personal Details</h2>
-          <input type='text' id='name' onChange={onChange} value={formData.name}/>
-          <input type='text'id='email'onChange={onChange} value={formData.email}/>
-          <input type='text'id='address' onChange={onChange}value={formData.address}/>
+          <label for="name">Full Name <span>*</span></label>
+          <input type='text' id='name' onChange={onChange} value={formData.name} /><br/>
+          <label for="email">Email <span>*</span></label>
+          <input type='text'id='email'onChange={onChange} value={formData.email}/><br/>
+          <label for="address">Address <span>*</span></label>
+          <input type='text'id='address' onChange={onChange}value={formData.address}/><br/>
+          <label for="phone">Phone <span>*</span></label>
           <input type='text'id='phone'onChange={onChange} value={formData.phone}/>
 
           <h2>Education</h2>
+          {/* <h6 style={{marginBottom: '0'}}>Click on 'Edit' to edit education field</h6>
+          <div id='btn' onClick={onEdit} style={{display: 'inline-block', padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', borderRadius: '4px', cursor: 'pointer'}}>Edit</div> */}
+
+
           {formData.Education && formData.Education.map((field, index) => (
             <>
              
              <div key={index}>
-              <label htmlFor={`college${index}`}>Institute:</label>
+              <label htmlFor={`college${index}`}>College:</label>
               <input
                 type="text"
                 id={`college${index}`}
                 value={field.college}
                 onChange={(e) => edhandleInputChange(index, 'college', e.target.value)}
-                disabled={!isEditing}
+                // disabled={!isEditing}
+              />
+               <label htmlFor={`course${index}`}>Course:</label>
+               <input
+                type="text"
+                id={`course${index}`}
+                value={field.course}
+                onChange={(e) => edhandleInputChange(index, 'course', e.target.value)}
+                // disabled={!isEditing}
+              />
+              <label htmlFor={`year${index}`}>Year:</label>
+              <input
+                type="text"
+                id={`year${index}`}
+                value={field.year}
+                onChange={(e) => edhandleInputChange(index, 'year', e.target.value)}
+                // disabled={!isEditing}
               />
               {/* ... */}
             </div>
             </>
        
           ))}
+
+        <h2>Experience</h2>
+          {/* <h6 style={{marginBottom: '0'}}>Click on 'Edit' to edit Expereince field</h6>
+          <div id='btn' onClick={onEdit} style={{display: 'inline-block', padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', borderRadius: '4px', cursor: 'pointer'}}>Edit</div> */}
+
+        
+          {formData.Experience && formData.Experience.map((field, index) => (
+            <>
+             
+             <div key={index}>
+              <label htmlFor={`company${index}`}>Company:</label>
+              <input
+                type="text"
+                id={`company${index}`}
+                value={field.company}
+                onChange={(e) => handleInputChange(index, 'company', e.target.value)}
+                // disabled={!isEditing}
+              />
+               <label htmlFor={`job${index}`}>Designation:</label>
+               <input
+                type="text"
+                id={`job${index}`}
+                value={field.job}
+                onChange={(e) => handleInputChange(index, 'job', e.target.value)}
+                // disabled={!isEditing}
+              />
+              <label htmlFor={`year${index}`}>Year:</label>
+              <input
+                type="text"
+                id={`year${index}`}
+                value={field.year}
+                onChange={(e) => handleInputChange(index, 'year', e.target.value)}
+                // disabled={!isEditing}
+              />
+              {/* ... */}
+            </div>
+            </>
+       
+          ))}
+          
 
           {/* <h2>Experience</h2>
           {formData.Experience && formData.Experience.map((field, index) => (
@@ -138,18 +190,14 @@ function FormEdit() {
           ))} */}
 
           <h2>Skills</h2>
-          {/* {formData.Skills && formData.Skills.map((skill) => (
-            
-             <>
+          {formData.Skills && formData.Skills.map((skill) => (
+             <input type='text' id='name' onChange={onChange} value={skill.label} />
              
-            <input onChange={onChange} value={skill.label}/>
-             </>
-          ))} */}
-          <div onClick={onEdit}>Edit</div>
-          <div onClick={onSave}>Save</div>
-          {/* <button style={{marginRight: '10px'}}>Create New</button>
-          <Link to="/view">View</Link> */}
-          <button type="submit">Save Data</button>
+          ))}
+          <h6 style={{marginBottom: '0'}}>Click 'Save' before submitting the fields</h6>
+          <div onClick={onSave} style={{display: 'inline-block', padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', borderRadius: '4px', cursor: 'pointer'}}>Save</div>
+<button type="submit" style={{marginLeft: '10px'}}>Submit</button>
+
         </form>
       )}
     </div>

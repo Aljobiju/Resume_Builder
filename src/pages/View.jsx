@@ -68,7 +68,8 @@ function View() {
             <p key={skill.value}>{skill.label}</p>
           ))}
           <button style={{marginRight: '10px'}}>Create New</button>
-          <Link to="/hello">Edit</Link>
+          <Link to="/hello" className="button">Edit</Link>
+
         </div>
       )}
     </div>

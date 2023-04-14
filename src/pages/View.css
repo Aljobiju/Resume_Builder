@@ -45,4 +45,15 @@ h2 {
   button:hover {
     background-color: #0062cc;
   }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  
   
