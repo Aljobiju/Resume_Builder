@@ -1,14 +1,14 @@
-import React from 'react'
-import Headerfile from '../Components/Header/Headerfile'
-import Form from '../Components/Form/Form';
+import React from "react";
+import Headerfile from "../Components/Header/Headerfile";
+import Form from "../Components/Form/Form";
 
-function Home() {
+function Home({ formData, setFormData }) {
   return (
     <>
-        <Headerfile />
-        <Form />
+      <Headerfile />
+      <Form formData={formData} setFormData={setFormData} />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

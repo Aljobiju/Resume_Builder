@@ -6,19 +6,29 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import View from './pages/View';
 import Home from './pages/Home';
 import FormEdit from './pages/FormEdit';
+import { useState } from 'react';
 
 
 function App() {
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+    educationDetails: [],
+    experienceDetails: [],
+    skills: []
+  });
+
   return (
     <div className="App">
-      {/* <Headerfile/>
-      <Form/> */}
       <Router>
 
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/view' element={<View />} />
-          <Route path='/hello' element={<FormEdit />} />
+          <Route path='/' element={<Home formData={formData} setFormData={setFormData} />} />
+          {/* <Route path='/view' element={<View />} />
+          <Route path='/hello' element={<FormEdit />} /> */}
 
         </Routes>
 
