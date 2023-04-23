@@ -22,6 +22,20 @@ function Form({ formData, setFormData }) {
       }),
     }));
   };
+  const onExperienceFieldChange = (value, key, id) => {
+    setFormData((current) => ({
+      ...current,
+      experienceDetails: current.experienceDetails.map((details) => {
+        if (details.id === id) {
+          return {
+            ...details,
+            [key]: value,
+          };
+        }
+        return details;
+      }),
+    }));
+  };
 
   const saveForm = () => {};
 
@@ -36,6 +50,21 @@ function Form({ formData, setFormData }) {
     setFormData((current) => ({
       ...current,
       educationDetails: [...current.educationDetails, newField],
+    }));
+  };
+
+
+  const addExperienceField = (e) => {
+    e.preventDefault();
+    const newField = {
+      id: crypto.randomUUID(),
+      company: "",
+      designation: "",
+      year: "",
+    };
+    setFormData((current) => ({
+      ...current,
+      experienceDetails: [...current.experienceDetails, newField],
     }));
   };
 
@@ -132,6 +161,56 @@ function Form({ formData, setFormData }) {
           );
         })}
         <button onClick={addEducationField}>Add Field</button>
+
+         <h2>Experience Details</h2>
+
+        {formData.experienceDetails.map((detail) => {
+          return (
+            <section key={detail.id}>
+              <div className="form-group">
+                <label htmlFor="company">
+                  Company <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={detail.company}
+                  onChange={(e) =>
+                    onExperienceFieldChange(
+                      e.target.value,
+                      "company",
+                      detail.id
+                    )
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="designation">
+                Designation <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={detail.designation}
+                  onChange={(e) =>
+                    onExperienceFieldChange(e.target.value, "designation", detail.id)
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="year">
+                  year <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={detail.year}
+                  onChange={(e) =>
+                    onExperienceFieldChange(e.target.value, "year", detail.id)
+                  }
+                />
+              </div>
+            </section>
+          );
+        })}
+        <button onClick={addExperienceField}>Add Field</button>
       </form>
     </div>
   );
