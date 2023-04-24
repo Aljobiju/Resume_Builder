@@ -44,17 +44,3 @@ form {
     background-color: #28a745;
   }
   
-  /* Apply styling to select dropdown */
-  .select__dropdown {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-
-  .select__dropdown:focus {
-    outline: none;
-    box-shadow: 0 0 5px #007bff;
-  }

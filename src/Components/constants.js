@@ -1,10 +1,10 @@
 
 
 export const SKILLS = [
-    { label: "PHP", id: crypto.randomUUID() },
-    { label: "C++", id: crypto.randomUUID() },
-    { label: "C#", id: crypto.randomUUID() },
-    { label: "html", id: crypto.randomUUID() },
-    { label: "Java", id: crypto.randomUUID() },
+    { label: "PHP", value: crypto.randomUUID() },
+    { label: "C++", value: crypto.randomUUID() },
+    { label: "C#", value: crypto.randomUUID() },
+    { label: "html", value: crypto.randomUUID() },
+    { label: "Java", value: crypto.randomUUID() },
   ];
   

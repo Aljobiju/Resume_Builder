@@ -1,9 +1,11 @@
 import Select from "react-select";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SKILLS } from "../constants";
 
 function Form({ formData, setFormData }) {
   //Storing values
+  const navigate = useNavigate();
 
   const onChange = (value, key) => {
     setFormData((current) => ({ ...current, [key]: value }));
@@ -37,7 +39,10 @@ function Form({ formData, setFormData }) {
     }));
   };
 
-  const saveForm = () => {};
+  const saveForm = (e) => {
+    e.preventDefault();
+    navigate("/view");
+  };
 
   const addEducationField = (e) => {
     e.preventDefault();
@@ -52,7 +57,6 @@ function Form({ formData, setFormData }) {
       educationDetails: [...current.educationDetails, newField],
     }));
   };
-
 
   const addExperienceField = (e) => {
     e.preventDefault();
@@ -162,7 +166,7 @@ function Form({ formData, setFormData }) {
         })}
         <button onClick={addEducationField}>Add Field</button>
 
-         <h2>Experience Details</h2>
+        <h2>Experience Details</h2>
 
         {formData.experienceDetails.map((detail) => {
           return (
@@ -185,13 +189,17 @@ function Form({ formData, setFormData }) {
               </div>
               <div className="form-group">
                 <label htmlFor="designation">
-                Designation <span>*</span>
+                  Designation <span>*</span>
                 </label>
                 <input
                   type="text"
                   value={detail.designation}
                   onChange={(e) =>
-                    onExperienceFieldChange(e.target.value, "designation", detail.id)
+                    onExperienceFieldChange(
+                      e.target.value,
+                      "designation",
+                      detail.id
+                    )
                   }
                 />
               </div>
@@ -211,6 +219,20 @@ function Form({ formData, setFormData }) {
           );
         })}
         <button onClick={addExperienceField}>Add Field</button>
+        <h2>Skills</h2>
+        <Select
+          isMulti
+          options={SKILLS}
+          value={formData.skills}
+          onChange={(e) => {
+            console.log(e);
+            setFormData((current) => ({
+              ...current,
+              skills: e,
+            }));
+          }}
+        />
+        <button>Save</button>
       </form>
     </div>
   );
