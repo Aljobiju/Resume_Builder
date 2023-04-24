@@ -27,8 +27,9 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home formData={formData} setFormData={setFormData} />} />
-          {/* <Route path='/view' element={<View />} />
-          <Route path='/hello' element={<FormEdit />} /> */}
+          <Route path='/view' element={<View formData={formData} />} />
+          
+       
 
         </Routes>
 
