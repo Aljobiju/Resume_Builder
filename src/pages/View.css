@@ -9,12 +9,12 @@ h2 {
     padding-bottom: 10px;
     margin-bottom: 20px;
   }
-  .education,
+  /* .education,
 .experience {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 20px;
-}
+} */
 
   
   /* p {
@@ -23,11 +23,16 @@ h2 {
   } */
   
   /* Styling for the education and experience sections */
-  div {
+  .form-group,
+  .section-separator,
+  .form-elements
+  {
     margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 30px;
+
   }
+  
   
   /* Styling for the skills section */
   button {
@@ -46,14 +51,69 @@ h2 {
     background-color: #0062cc;
   }
 
-  .button {
+  /* .button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border-radius: 4px;
     text-decoration: none;
+  } */
+  .section-separator {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
+
+  .experience-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .experience-details .form-group {
+    margin-right: 10px;
+  }
+  
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+  }
+  
+  .form-group {
+    margin-right: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], input[type="number"],input[type="email"] {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  } */
+  
+  .section-separator {
+    margin: 20px 0;
+    border-top: 1px solid #ccc;
+  }
+
+  
+  
+  
   
   
   
