@@ -180,10 +180,7 @@ function Form({ formData, setFormData }) {
                   }
                 />
               </div>
-              <button
-                onClick={() => deleteEducationField(detail.id)}
-                color="danger"
-              >
+              <button onClick={() => deleteEducationField(detail.id)}>
                 Delete
               </button>
               <div className="section-separator"></div>
@@ -245,10 +242,7 @@ function Form({ formData, setFormData }) {
                   }
                 />
               </div>
-              <button
-                onClick={() => deleteExperienceField(detail.id)}
-                color="danger"
-              >
+              <button onClick={() => deleteExperienceField(detail.id)}>
                 Delete
               </button>
               <div className="section-separator"></div>
