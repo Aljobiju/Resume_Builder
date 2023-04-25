@@ -1,11 +1,9 @@
 import './App.css';
-import Form from './Components/Form/Form';
-import Headerfile from './Components/Header/Headerfile';
+
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import View from './pages/View';
 import Home from './pages/Home';
-import FormEdit from './pages/FormEdit';
 import { useState } from 'react';
 
 

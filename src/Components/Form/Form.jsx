@@ -1,5 +1,5 @@
 import Select from "react-select";
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SKILLS } from "../constants";
 
@@ -72,8 +72,24 @@ function Form({ formData, setFormData }) {
     }));
   };
 
+  const deleteEducationField = (id) => {
+    setFormData((current) => ({
+      ...current,
+      educationDetails: current.educationDetails.filter(
+        (detail) => detail.id !== id
+      ),
+    }));
+  };
+  const deleteExperienceField = (id) => {
+    setFormData((current) => ({
+      ...current,
+      experienceDetails: current.experienceDetails.filter(
+        (detail) => detail.id !== id
+      ),
+    }));
+  };
   return (
-    <div>
+    <div className="form-elements">
       <form onSubmit={saveForm}>
         <h2>Personal Details</h2>
         <div className="form-group">
@@ -86,46 +102,47 @@ function Form({ formData, setFormData }) {
             onChange={(e) => onChange(e.target.value, "name")}
           />
         </div>
-
         <div className="form-group">
           <label for="address">Address</label>
           <input
+            required
             type="text"
             value={formData.address}
             onChange={(e) => onChange(e.target.value, "address")}
           />
         </div>
-
         <div className="form-group">
           <label for="phone">Phone</label>
           <input
-            type="text"
+            required
+            type="number"
             value={formData.phone}
             onChange={(e) => onChange(e.target.value, "phone")}
           />
         </div>
-
         <div className="form-group">
           <label for="email">
             Email <span>*</span>
           </label>
           <input
-            type="text"
+            required
+            type="email"
             value={formData.email}
             onChange={(e) => onChange(e.target.value, "email")}
           />
         </div>
-
         <h2>Education Details</h2>
-
-        {formData.educationDetails.map((detail) => {
+        {formData.educationDetails.map((detail, index) => {
+          const educationNumber = index + 1;
           return (
-            <section key={detail.id}>
+            <section className="experience-details" key={detail.id}>
+              <h2>Experience {educationNumber}</h2>
               <div className="form-group">
                 <label htmlFor="institution">
                   institution <span>*</span>
                 </label>
                 <input
+                  required
                   type="text"
                   value={detail.institution}
                   onChange={(e) =>
@@ -142,6 +159,7 @@ function Form({ formData, setFormData }) {
                   course <span>*</span>
                 </label>
                 <input
+                  required
                   type="text"
                   value={detail.course}
                   onChange={(e) =>
@@ -154,23 +172,32 @@ function Form({ formData, setFormData }) {
                   year <span>*</span>
                 </label>
                 <input
-                  type="text"
+                  required
+                  type="number"
                   value={detail.year}
                   onChange={(e) =>
                     onEducationFieldChange(e.target.value, "year", detail.id)
                   }
                 />
               </div>
+              <button
+                onClick={() => deleteEducationField(detail.id)}
+                color="danger"
+              >
+                Delete
+              </button>
+              <div className="section-separator"></div>
             </section>
           );
         })}
         <button onClick={addEducationField}>Add Field</button>
-
         <h2>Experience Details</h2>
 
-        {formData.experienceDetails.map((detail) => {
+        {formData.experienceDetails.map((detail, index) => {
+          const experienceNumber = index + 1;
           return (
-            <section key={detail.id}>
+            <section className="experience-details" key={detail.id}>
+              <h2>Experience {experienceNumber}</h2>
               <div className="form-group">
                 <label htmlFor="company">
                   Company <span>*</span>
@@ -208,13 +235,20 @@ function Form({ formData, setFormData }) {
                   year <span>*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   value={detail.year}
                   onChange={(e) =>
                     onExperienceFieldChange(e.target.value, "year", detail.id)
                   }
                 />
               </div>
+              <button
+                onClick={() => deleteExperienceField(detail.id)}
+                color="danger"
+              >
+                Delete
+              </button>
+              <div className="section-separator"></div>
             </section>
           );
         })}
