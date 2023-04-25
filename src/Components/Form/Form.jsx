@@ -139,7 +139,7 @@ function Form({ formData, setFormData }) {
               <h4>Experience {educationNumber}</h4>
               <div className="form-group">
                 <label htmlFor="institution">
-                  institution <span>*</span>
+                  Institution <span>*</span>
                 </label>
                 <input
                   required
@@ -156,7 +156,7 @@ function Form({ formData, setFormData }) {
               </div>
               <div className="form-group">
                 <label htmlFor="course">
-                  course <span>*</span>
+                  Course <span>*</span>
                 </label>
                 <input
                   required
@@ -169,7 +169,7 @@ function Form({ formData, setFormData }) {
               </div>
               <div className="form-group">
                 <label htmlFor="year">
-                  year <span>*</span>
+                  Year <span>*</span>
                 </label>
                 <input
                   required
@@ -234,7 +234,7 @@ function Form({ formData, setFormData }) {
               </div>
               <div className="form-group">
                 <label htmlFor="year">
-                  year <span>*</span>
+                  Year <span>*</span>
                 </label>
                 <input
                   required
