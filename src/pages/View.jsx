@@ -22,6 +22,7 @@ function View({ formData }) {
                 <p>College: {field.institution}</p>
                 <p>Course: {field.course}</p>
                 <p>Year: {field.year}</p>
+                <div className="section-separator"></div>
               </div>
             ))}
 
@@ -33,6 +34,7 @@ function View({ formData }) {
                 <p>Company: {field.company}</p>
                 <p>Job: {field.designation}</p>
                 <p>year: {field.year}</p>
+                <div className="section-separator"></div>
               </div>
             ))}
 

@@ -96,6 +96,7 @@ function Form({ formData, setFormData }) {
             Full Name <span>*</span>
           </label>
           <input
+            required
             type="text"
             value={formData.name}
             onChange={(e) => onChange(e.target.value, "name")}
@@ -202,6 +203,7 @@ function Form({ formData, setFormData }) {
                   Company <span>*</span>
                 </label>
                 <input
+                  required
                   type="text"
                   value={detail.company}
                   onChange={(e) =>
@@ -218,6 +220,7 @@ function Form({ formData, setFormData }) {
                   Designation <span>*</span>
                 </label>
                 <input
+                  required
                   type="text"
                   value={detail.designation}
                   onChange={(e) =>
@@ -234,6 +237,7 @@ function Form({ formData, setFormData }) {
                   year <span>*</span>
                 </label>
                 <input
+                  required
                   type="number"
                   value={detail.year}
                   onChange={(e) =>
