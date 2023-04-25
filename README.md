@@ -19,4 +19,4 @@ To run the app in the development mode,
 
 ### Deployment
 
-Checkout a live deployment of this app [here]().
+Checkout a live deployment of this app [here](https://aljo-resume-builder.netlify.app/).
