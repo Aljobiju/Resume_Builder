@@ -134,8 +134,8 @@ function Form({ formData, setFormData }) {
         {formData.educationDetails.map((detail, index) => {
           const educationNumber = index + 1;
           return (
-            <section className="experience-details" key={detail.id}>
-              <h2>Experience {educationNumber}</h2>
+            <section className="exp_edu-details" key={detail.id}>
+              <h4>Experience {educationNumber}</h4>
               <div className="form-group">
                 <label htmlFor="institution">
                   institution <span>*</span>
@@ -195,8 +195,8 @@ function Form({ formData, setFormData }) {
         {formData.experienceDetails.map((detail, index) => {
           const experienceNumber = index + 1;
           return (
-            <section className="experience-details" key={detail.id}>
-              <h2>Experience {experienceNumber}</h2>
+            <section className="exp_edu-details" key={detail.id}>
+              <h4>Experience {experienceNumber}</h4>
               <div className="form-group">
                 <label htmlFor="company">
                   Company <span>*</span>

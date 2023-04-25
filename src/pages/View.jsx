@@ -18,6 +18,7 @@ function View({ formData }) {
           {formData.educationDetails &&
             formData.educationDetails.map((field, index) => (
               <div className="form-group" key={index}>
+                <h4>Education {index + 1}</h4>
                 <p>College: {field.institution}</p>
                 <p>Course: {field.course}</p>
                 <p>Year: {field.year}</p>
@@ -42,8 +43,6 @@ function View({ formData }) {
                 <p key={skill.value}>{skill.label}</p>
               ))}
           </div>
-
-          <button>Create New</button>
           <Link to="/" className="button">
             Edit
           </Link>
